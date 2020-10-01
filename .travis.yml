@@ -1,7 +1,4 @@
 
 language: java
 
-jdk:
-	- openjdk8
-
 script: "cd ./Fibo2 && mvn package && mvn clean test"
