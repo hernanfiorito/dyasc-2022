@@ -4,11 +4,19 @@
 class ServidorTravis
 {
     public:
-    ServidorTravis(){
-        _url = "https://api.travis-ci.org/repos/capponi/dyasc-2020/builds";
-    }
+        ServidorTravis();
+        JSONVar obtenerBuild();
 
-    JSONVar obtenerBuild(){
+    private:
+        String _url;
+
+};
+
+ServidorTravis::ServidorTravis(){
+        _url = "https://api.travis-ci.org/repos/capponi/dyasc-2020/builds";
+}
+
+JSONVar ServidorTravis::obtenerBuild(){
         HTTPClient http; 
         http.begin(_url);
 
@@ -21,9 +29,4 @@ class ServidorTravis
         http.end();
 
         return build;
-    }
-
-    private:
-        String _url;
-
-};
+}
