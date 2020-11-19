@@ -8,7 +8,7 @@ class RedWifi
         _password = password;
 
     }
-    
+
     void conectar(){
         WiFi.begin(_ssid, _password);
 
