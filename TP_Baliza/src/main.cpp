@@ -2,36 +2,33 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <Arduino_JSON.h>
-#include <RedWifi.cpp>
-#include <Baliza.cpp>
-#include <ConsultorServidorTravis.cpp>
+#include <RedWifi.h>
+#include <Baliza.h>
+#include <ConsultorServidorTravis.h>
 
-Baliza baliza;
-ConsultorServidorTravis consultor;
+Baliza* baliza = new Baliza;
+ConsultorServidorTravis* consultor = new ConsultorServidorTravis;
 String ultimoEstado;
 String estadoActual;
 
 void setup() {
   Serial.begin(115200);
   
-  RedWifi red("CAPPONI", "clau1963");
+  RedWifi red("Hernan95", "perroloco");
   red.conectar();
  
-  ultimoEstado = consultor.obtenerEstado();
+  ultimoEstado = consultor->obtenerEstado();
 }
 
 void loop() {
-  delay(4000);
-  estadoActual =consultor.obtenerEstado();
-  
-  if(estadoActual.compareTo("Exitoso")==0){
-    baliza.encenderLed(25);
-  } else if(estadoActual.compareTo("Fallido")==0){
-    baliza.encenderLed(13);
-  } else if(estadoActual.compareTo("En progreso")==0){
-    baliza.parpadearVerdeYRojo();
+  estadoActual = consultor->obtenerEstado();
+  Serial.println(estadoActual.equals("Exitoso")==0);
+  if(estadoActual.equals("Exitoso")==0){
+    baliza->encenderLed(25);
+  } else if(estadoActual.equals("Fallido")==0){
+    baliza->encenderLed(13);
+  } else if(estadoActual.equals("En progreso")==0){
+    baliza->parpadearVerdeYRojo();
   }
-
-  
-
+  delay(200);
 }
