@@ -26,10 +26,12 @@ void Baliza::apagarLed(int led){
 }
 
 void Baliza::parpadearLed(int led){
-    digitalWrite(led, HIGH);
-    delay(300);
-    digitalWrite(led, LOW);
-    delay(300);
+    for(int i = 0; i <= 3; i++){
+        digitalWrite(led, HIGH);
+        delay(300);
+        digitalWrite(led, LOW);
+        delay(300);
+    }
 }
 
 void Baliza::parpadearVerdeYRojo(){
