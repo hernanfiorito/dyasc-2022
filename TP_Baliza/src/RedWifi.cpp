@@ -17,3 +17,7 @@ void RedWifi::conectar(){
 
     Serial.println("WiFi connected.");
 }
+
+int RedWifi::chequearConexion(){
+    return (WiFi.status() == WL_CONNECTED);
+}
