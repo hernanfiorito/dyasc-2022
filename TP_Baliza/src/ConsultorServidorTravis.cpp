@@ -1,24 +1,23 @@
 #include <Arduino.h>
 #include <HTTPClient.h>
 #include <Arduino_JSON.h>
-#include "ConsultorServidorTravis.h"
+#include "ConsultorServidor.h"
 
-ConsultorServidorTravis::ConsultorServidorTravis(){
-    //https://api.travis-ci.org/repos/capponi/dyasc-2020/builds
-    _url = "https://api.travis-ci.org/repos/hernanfiorito/dyasc-2020/builds";
+ConsultorServidorTravis::ConsultorServidorTravis(String url) : ConsultorServidor(url){}
+
+String ConsultorServidorTravis::obtenerURL(){
+    return ConsultorServidor::obtenerURL();
 }
 
 JSONVar ConsultorServidorTravis::obtenerBuild(){
     HTTPClient http; 
-    http.begin(_url);
+    http.begin(obtenerURL());
 
     int httpCode = http.GET();   
     String payload = http.getString();
 
     JSONVar myObject = JSON.parse(payload);
     JSONVar* build = &myObject;
-    
-    //Serial.println(build);
 
     http.end();
 
