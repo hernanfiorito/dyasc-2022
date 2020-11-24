@@ -4,10 +4,10 @@
 #include <Arduino_JSON.h>
 #include <RedWifi.h>
 #include <Baliza.h>
-#include <ConsultorServidorTravis.h>
+#include <ConsultorServidor.h>
 
 Baliza* baliza = new Baliza;
-ConsultorServidorTravis* consultor = new ConsultorServidorTravis;
+ConsultorServidorTravis* consultor = new ConsultorServidorTravis("https://api.travis-ci.org/repos/hernanfiorito/dyasc-2020/builds");
 RedWifi* red = new RedWifi("Hernan95", "perroloco");
 String ultimoEstado;
 String estadoActual;
