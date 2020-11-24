@@ -3,6 +3,8 @@
 #include "Baliza.h"
 
 Baliza::Baliza(){
+    desconectado=0;
+    ultimoEstado="";
     led_rojo = 13;
     led_amarillo = 27;
     led_verde = 25;
@@ -11,15 +13,13 @@ Baliza::Baliza(){
     pinMode(led_amarillo, OUTPUT);
     pinMode(led_verde, OUTPUT);
 
+    
 }
 
 void Baliza::encenderLed(int led){
     digitalWrite(led, HIGH);
 }
 
-void Baliza::encenderAmarillo(){
-    digitalWrite(led_amarillo, HIGH);
-}
 
 void Baliza::apagarLed(int led){
     digitalWrite(led, LOW);
@@ -41,5 +41,46 @@ void Baliza::parpadearVerdeYRojo(){
     digitalWrite(led_verde, LOW);
     digitalWrite(led_rojo, LOW);
     delay(300);
+
+}
+
+void Baliza::encenderSegunEstado(){
+    if(estadoActual.equals("Exitoso")==0){
+        apagarLed(led_rojo);
+        if(estadoActual != ultimoEstado || desconectado){
+            desconectado=0;
+            parpadearLed(led_verde);
+        }
+        encenderLed(led_verde);
+    } else if(estadoActual.equals("Fallido")==0){
+        apagarLed(led_verde);
+        if(estadoActual != ultimoEstado || desconectado){
+            desconectado=0;
+            parpadearLed(led_rojo);
+        }
+        encenderLed(led_rojo);
+    } else if(estadoActual.equals("En progreso")==0){
+        parpadearVerdeYRojo();
+    }
+
+}
+
+void Baliza::ejecutar(ConsultorServidor* consultor, int estaConectado){
+    if(estaConectado){   
+        if(ultimoEstado.equals("")==0){
+            ultimoEstado = consultor->obtenerEstado();
+        } else {
+            ultimoEstado = estadoActual;
+        }
+        delay(2000);
+        estadoActual = consultor->obtenerEstado();      
+        encenderSegunEstado(); 
+        
+    } else {
+        apagarLed(led_rojo);
+        apagarLed(led_verde);
+        encenderLed(led_amarillo);
+        desconectado=1;
+    }
 
 }
