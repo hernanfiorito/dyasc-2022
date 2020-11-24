@@ -73,6 +73,7 @@ void Baliza::ejecutar(ConsultorServidor* consultor, int estaConectado){
             ultimoEstado = estadoActual;
         }
         delay(2000);
+        apagarLed(led_amarillo);
         estadoActual = consultor->obtenerEstado();      
         encenderSegunEstado(); 
         
