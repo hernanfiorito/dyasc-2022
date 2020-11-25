@@ -44,21 +44,30 @@ void Baliza::parpadearVerdeYRojo(){
 
 }
 
+void Baliza::encenderExitoso(){
+    apagarLed(led_rojo);
+    if(estadoActual != ultimoEstado || desconectado){
+        desconectado=0;
+        parpadearLed(led_verde);
+    }
+    encenderLed(led_verde);
+
+}
+void Baliza::encenderFallido(){
+    apagarLed(led_verde);
+    if(estadoActual != ultimoEstado || desconectado){
+        desconectado=0;
+        parpadearLed(led_rojo);
+    }
+    encenderLed(led_rojo);    
+    
+}
+
 void Baliza::encenderSegunEstado(){
     if(estadoActual.equals("Exitoso")==0){
-        apagarLed(led_rojo);
-        if(estadoActual != ultimoEstado || desconectado){
-            desconectado=0;
-            parpadearLed(led_verde);
-        }
-        encenderLed(led_verde);
+        encenderExitoso();        
     } else if(estadoActual.equals("Fallido")==0){
-        apagarLed(led_verde);
-        if(estadoActual != ultimoEstado || desconectado){
-            desconectado=0;
-            parpadearLed(led_rojo);
-        }
-        encenderLed(led_rojo);
+        encenderFallido();
     } else if(estadoActual.equals("En progreso")==0){
         parpadearVerdeYRojo();
     }

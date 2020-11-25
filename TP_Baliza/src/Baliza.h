@@ -10,6 +10,8 @@ class Baliza
         void parpadearVerdeYRojo();
         void ejecutar(ConsultorServidor* consultor, int estaConectado);
         void encenderSegunEstado();
+        void encenderExitoso();
+        void encenderFallido();        
 
     private:
         int led_rojo;
