@@ -7,7 +7,4 @@ class ConsultorServidorTravis
     JSONVar obtenerBuild();
     String obtenerEstado();
 
-    private:
-        String _url;
-
 };

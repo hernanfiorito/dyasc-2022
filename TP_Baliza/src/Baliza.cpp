@@ -64,11 +64,11 @@ void Baliza::encenderFallido(){
 }
 
 void Baliza::encenderSegunEstado(){
-    if(estadoActual.equals("Exitoso")==0){
+    if(estadoActual.equals("Exitoso")==1){
         encenderExitoso();        
-    } else if(estadoActual.equals("Fallido")==0){
+    } else if(estadoActual.equals("Fallido")==1){
         encenderFallido();
-    } else if(estadoActual.equals("En progreso")==0){
+    } else if(estadoActual.equals("En progreso")==1){
         parpadearVerdeYRojo();
     }
 

@@ -3,21 +3,35 @@
 class ConsultorServidor
 {
     public:
-        ConsultorServidor(String url);
-        virtual JSONVar obtenerBuild() = 0;
-        virtual String obtenerEstado() = 0;
-        virtual String obtenerURL();
+        ConsultorServidor(String url);        
+        virtual String obtenerEstado() = 0;      
 
-    private:
+    protected:
         String _url;
 };
 
 class ConsultorServidorTravis : public ConsultorServidor
 {
     public:
-        ConsultorServidorTravis(String url);
-        JSONVar obtenerBuild();
+        ConsultorServidorTravis(String url);        
         String obtenerEstado();
-        String obtenerURL();
+        JSONVar obtenerBuild();
+
+
+};
+
+class ConsultorServidorFallidoMock : public ConsultorServidor
+{
+    public:
+        ConsultorServidorFallidoMock();        
+        String obtenerEstado();        
+
+};
+
+class ConsultorServidorExitosoMock : public ConsultorServidor
+{
+    public:
+        ConsultorServidorExitosoMock();        
+        String obtenerEstado();        
 
 };
