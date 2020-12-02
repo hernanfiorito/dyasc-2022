@@ -64,7 +64,6 @@ void Baliza::encenderFallido(){
 }
 
 void Baliza::encenderSegunEstado(){
-    Serial.println(estadoActual);   
     if(estadoActual.equals("Exitoso")){
         encenderExitoso();        
     } else if(estadoActual.equals("Fallido")){
