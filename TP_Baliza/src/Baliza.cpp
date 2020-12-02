@@ -26,7 +26,7 @@ void Baliza::apagarLed(int led){
 }
 
 void Baliza::parpadearLed(int led){
-    for(int i = 0; i <= 3; i++){
+    for(int i = 0; i < 3; i++){
         digitalWrite(led, HIGH);
         delay(300);
         digitalWrite(led, LOW);
@@ -76,7 +76,7 @@ void Baliza::encenderSegunEstado(){
 
 void Baliza::ejecutar(ConsultorServidor* consultor, int estaConectado){
     if(estaConectado){   
-        if(ultimoEstado.equals("")==0){
+        if(ultimoEstado.equals("")){
             ultimoEstado = consultor->obtenerEstado();
         } else {
             ultimoEstado = estadoActual;
