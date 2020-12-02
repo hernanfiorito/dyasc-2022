@@ -64,11 +64,12 @@ void Baliza::encenderFallido(){
 }
 
 void Baliza::encenderSegunEstado(){
-    if(estadoActual.equals("Exitoso")==0){
+    Serial.println(estadoActual);   
+    if(estadoActual.equals("Exitoso")){
         encenderExitoso();        
-    } else if(estadoActual.equals("Fallido")==0){
+    } else if(estadoActual.equals("Fallido")){
         encenderFallido();
-    } else if(estadoActual.equals("En progreso")==0){
+    } else if(estadoActual.equals("En progreso")){
         parpadearVerdeYRojo();
     }
 
@@ -83,7 +84,7 @@ void Baliza::ejecutar(ConsultorServidor* consultor, int estaConectado){
         }
         delay(2000);
         apagarLed(led_amarillo);
-        estadoActual = consultor->obtenerEstado();      
+        estadoActual = consultor->obtenerEstado();   
         encenderSegunEstado(); 
         
     } else {

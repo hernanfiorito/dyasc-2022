@@ -21,3 +21,12 @@ class ConsultorServidorTravis : public ConsultorServidor
         String obtenerURL();
 
 };
+
+class MockConsultorServidorExitoso : public ConsultorServidor
+{
+    public:
+        MockConsultorServidorExitoso(String url);
+        JSONVar obtenerBuild();
+        String obtenerEstado();
+        String obtenerURL();
+};
