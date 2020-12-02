@@ -76,7 +76,7 @@ void Baliza::encenderSegunEstado(){
 
 void Baliza::ejecutar(ConsultorServidor* consultor, int estaConectado){
     if(estaConectado){   
-        if(ultimoEstado.equals("")==0){
+        if(ultimoEstado.equals("")==1){
             ultimoEstado = consultor->obtenerEstado();
         } else {
             ultimoEstado = estadoActual;
