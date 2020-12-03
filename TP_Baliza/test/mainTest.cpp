@@ -2,7 +2,7 @@
 #include <unity.h>
 #include <RedWifi.h>
 #include <Baliza.h>
-RedWifi* redTest = new RedWifi("CAPPONI", "clau1963");
+RedWifi* redTest = new RedWifi("Hernan95", "perroloco");
 Baliza* balizaTest = new Baliza;
 int ledVerde = 25;
 int ledRojo = 13;
