@@ -64,11 +64,11 @@ void Baliza::encenderFallido(){
 }
 
 void Baliza::encenderSegunEstado(){
-    if(estadoActual.equals("Exitoso")){
+    if(estadoActual.equals("Exitoso")==1){
         encenderExitoso();        
-    } else if(estadoActual.equals("Fallido")){
+    } else if(estadoActual.equals("Fallido")==1){
         encenderFallido();
-    } else if(estadoActual.equals("En progreso")){
+    } else if(estadoActual.equals("En progreso")==1){
         parpadearVerdeYRojo();
     }
 
@@ -76,7 +76,7 @@ void Baliza::encenderSegunEstado(){
 
 void Baliza::ejecutar(ConsultorServidor* consultor, int estaConectado){
     if(estaConectado){   
-        if(ultimoEstado.equals("")){
+        if(ultimoEstado.equals("")==1){
             ultimoEstado = consultor->obtenerEstado();
         } else {
             ultimoEstado = estadoActual;
