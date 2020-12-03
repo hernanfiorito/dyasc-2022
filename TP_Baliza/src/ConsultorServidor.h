@@ -35,21 +35,3 @@ class ConsultorServidorExitosoMock : public ConsultorServidor
         String obtenerEstado();        
 
 };
-
-class MockConsultorServidorExitoso : public ConsultorServidor
-{
-    public:
-        MockConsultorServidorExitoso(String url);
-        JSONVar obtenerBuild();
-        String obtenerEstado();
-        String obtenerURL();
-};
-
-class MockConsultorServidorFallido : public ConsultorServidor
-{
-    public:
-        MockConsultorServidorFallido(String url);
-        JSONVar obtenerBuild();
-        String obtenerEstado();
-        String obtenerURL();
-};
