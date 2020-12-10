@@ -14,7 +14,7 @@ JSONVar ConsultorServidorTravis::obtenerBuild(){
 
     JSONVar myObject = JSON.parse(payload);
     JSONVar* build = &myObject;
-
+    Serial.println(myObject);
     http.end();
 
     return build[0];

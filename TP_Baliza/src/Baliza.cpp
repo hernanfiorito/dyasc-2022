@@ -39,35 +39,36 @@ void Baliza::parpadearVerdeYRojo(){
     digitalWrite(led_rojo, HIGH);
     delay(300);
     digitalWrite(led_verde, LOW);
-    digitalWrite(led_rojo, LOW);
-    delay(300);
+    digitalWrite(led_rojo, LOW);    
 
 }
 
 void Baliza::encenderExitoso(){
     apagarLed(led_rojo);
-    if(estadoActual != ultimoEstado || desconectado){
+    if(ultimoEstado.equals("Fallido") == 1 || desconectado){
         desconectado=0;
         parpadearLed(led_verde);
     }
     encenderLed(led_verde);
+    
 
 }
 void Baliza::encenderFallido(){
     apagarLed(led_verde);
-    if(estadoActual != ultimoEstado || desconectado){
+    if(ultimoEstado.equals("Exitoso") == 1 || desconectado){
         desconectado=0;
         parpadearLed(led_rojo);
     }
-    encenderLed(led_rojo);    
+    encenderLed(led_rojo);
+    
     
 }
 
 void Baliza::encenderSegunEstado(){
     if(estadoActual.equals("Exitoso")==1){
-        encenderExitoso();        
+        encenderExitoso();              
     } else if(estadoActual.equals("Fallido")==1){
-        encenderFallido();
+        encenderFallido();        
     } else if(estadoActual.equals("En progreso")==1){
         parpadearVerdeYRojo();
     }
@@ -78,10 +79,9 @@ void Baliza::ejecutar(ConsultorServidor* consultor, int estaConectado){
     if(estaConectado){   
         if(ultimoEstado.equals("")==1){
             ultimoEstado = consultor->obtenerEstado();
-        } else {
+        } else if(estadoActual.equals("En progreso") == 0){
             ultimoEstado = estadoActual;
         }
-        delay(2000);
         apagarLed(led_amarillo);
         estadoActual = consultor->obtenerEstado();      
         encenderSegunEstado(); 

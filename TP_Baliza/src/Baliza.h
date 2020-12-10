@@ -9,9 +9,7 @@ class Baliza
         void parpadearLed(int led);
         void parpadearVerdeYRojo();
         void ejecutar(ConsultorServidor* consultor, int estaConectado);
-        void encenderSegunEstado();
-        void encenderExitoso();
-        void encenderFallido();        
+        
 
     private:
         int led_rojo;
@@ -20,6 +18,9 @@ class Baliza
         int desconectado;
         String ultimoEstado;
         String estadoActual;
+        void encenderSegunEstado();
+        void encenderExitoso();
+        void encenderFallido();
        
 
 };
