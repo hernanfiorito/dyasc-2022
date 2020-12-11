@@ -39,7 +39,8 @@ void Baliza::parpadearVerdeYRojo(){
     digitalWrite(led_rojo, HIGH);
     delay(300);
     digitalWrite(led_verde, LOW);
-    digitalWrite(led_rojo, LOW);
+    digitalWrite(led_rojo, LOW);    
+
 }
 
 void Baliza::encenderExitoso(){
@@ -49,6 +50,7 @@ void Baliza::encenderExitoso(){
         parpadearLed(led_verde);
     }
     encenderLed(led_verde);
+    
 
 }
 void Baliza::encenderFallido(){
@@ -57,15 +59,16 @@ void Baliza::encenderFallido(){
         desconectado=0;
         parpadearLed(led_rojo);
     }
-    encenderLed(led_rojo);    
+    encenderLed(led_rojo);
+    
     
 }
 
 void Baliza::encenderSegunEstado(){
     if(estadoActual.equals("Exitoso")==1){
-        encenderExitoso();        
+        encenderExitoso();              
     } else if(estadoActual.equals("Fallido")==1){
-        encenderFallido();
+        encenderFallido();        
     } else if(estadoActual.equals("En progreso")==1){
         parpadearVerdeYRojo();
     }
