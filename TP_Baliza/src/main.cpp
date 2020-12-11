@@ -6,8 +6,8 @@
 #include <Baliza.h>
 
 Baliza* baliza = new Baliza;
-ConsultorServidor* consultor = new ConsultorServidorTravis("https://api.travis-ci.org/repos/capponi/dyasc-2020/builds");
-RedWifi* red = new RedWifi("CAPPONI", "clau1963");
+ConsultorServidor* consultor = new ConsultorServidorTravis("https://api.travis-ci.org/repos/hernanfiorito/dyasc-2020/builds");
+RedWifi* red = new RedWifi("Hernan95", "perroloco");
 
 #ifndef UNIT_TEST
 void setup() {
